@@ -21,17 +21,6 @@ public class PlayerHP : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log("è’ìÀÇµÇΩëäéË: " + collision.gameObject.name);
-
-    //    if (collision.gameObject.CompareTag("Enemy") && !isInvincible)
-    //    {
-    //        Debug.Log("ìGÇ∆è’ìÀÇµÇ‹ÇµÇΩÅI");
-    //        TakeDamege(1);
-    //    }
-    //}
-
     void OnTriggerEnter2D(Collider2D other)
     {
         //ìGÇ∆è’ìÀÇ∑ÇÈÇ∆ÉmÉbÉNÉoÉbÉN
@@ -52,21 +41,7 @@ public class PlayerHP : MonoBehaviour
             Debug.Log("„©Ç∆è’ìÀÇµÇ‹ÇµÇΩ");
             TakeDamege(maxHP);
         }
-
     }
-
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Enemy"))
-    //    {
-    //        rb.velocity = Vector2.zero;
-
-    //        Vector2 direction = (transform.position - other.transform.position).normalized;
-
-    //        rb.AddForce(direction * knockback, ForceMode2D.Impulse);
-
-    //    }
-    //}
 
     void TakeDamege(int damage)
     {
@@ -85,10 +60,26 @@ public class PlayerHP : MonoBehaviour
     private IEnumerator InvincibleTime()
     {
         isInvincible = true;
-        yield return new WaitForSeconds(invincible);
 
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        float blinkInterval = 0.3f;
+        float elapsed = 0f;
+
+        while (elapsed < invincible)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+            yield return new WaitForSeconds(blinkInterval);
+            elapsed += blinkInterval;
+        }
+
+        spriteRenderer.enabled = true;
         isInvincible = false;
         Debug.Log("ñ≥ìGâèú");
+
+        //yield return new WaitForSeconds(invincible);
+
+        //isInvincible = false;
+        //Debug.Log("ñ≥ìGâèú");
 
     }
 

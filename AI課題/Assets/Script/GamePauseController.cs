@@ -6,11 +6,14 @@ public class GamePauseController : MonoBehaviour
 {
     public TextMeshProUGUI countdownText;
     private bool isPaused = false;
+    private bool isCooldown = false;
+
+    public float cooldownTime = 5f; //クールタイム
 
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.T) && !isPaused)
+        if (Input.GetKeyDown(KeyCode.F) && !isPaused && !isCooldown)
         {
             StartCoroutine(PauseForSeconds(5f));
         }
@@ -19,6 +22,7 @@ public class GamePauseController : MonoBehaviour
     IEnumerator PauseForSeconds(float seconds)
     {
         isPaused = true;
+        isCooldown = true;
 
         //プレイヤー以外の動くオブジェクト
         MovingObject[] movingObjects = FindObjectsOfType<MovingObject>();
@@ -62,6 +66,11 @@ public class GamePauseController : MonoBehaviour
         }
 
         isPaused = false;
+
+        //クールタイム
+        yield return new WaitForSeconds(cooldownTime);
+        isCooldown = false;
+
 
 
     }
