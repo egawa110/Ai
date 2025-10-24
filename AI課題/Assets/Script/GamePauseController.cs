@@ -5,14 +5,14 @@ using System.Collections;
 public class GamePauseController : MonoBehaviour
 {
     public TextMeshProUGUI countdownText;
-    private bool isPaused = false;
+    public bool isPaused = false;
     private bool isCooldown = false;
 
     public float cooldownTime = 5f; //クールタイム
 
     void Update()
     {
-
+        //Fキーを押すとポーズ
         if (Input.GetKeyDown(KeyCode.F) && !isPaused && !isCooldown)
         {
             StartCoroutine(PauseForSeconds(5f));
