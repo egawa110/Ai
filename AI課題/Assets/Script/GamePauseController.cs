@@ -5,7 +5,8 @@ using System.Collections;
 public class GamePauseController : MonoBehaviour
 {
     public TextMeshProUGUI countdownText;
-    public bool isPaused = false;
+    public bool FLAG        = false;
+    public bool isPaused    = false;
     private bool isCooldown = false;
 
     public float cooldownTime = 5f; //クールタイム
@@ -63,6 +64,7 @@ public class GamePauseController : MonoBehaviour
         foreach (EnemyContoroller enemy in enemies)
         {
             enemy.enabled = true;
+            FLAG = true;
         }
 
         isPaused = false;
