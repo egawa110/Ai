@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class OBJButton : MonoBehaviour
 {
-    public GameObject obj1;      //出現させるオブジェクト
+    public GameObject obj1;      //動かすオブジェクト
     public GameObject obj2;
     public GameObject obj3;
     public GameObject obj4;
     public GameObject obj5;
 
     private bool FLAG = false;
-
     public GamePauseController GP;  //時間停止フラグ
 
     private void OnTriggerStay2D(Collider2D other)
@@ -23,6 +22,7 @@ public class OBJButton : MonoBehaviour
                 obj3.gameObject.SetActive(true);
                 obj4.gameObject.SetActive(true);
                 obj5.gameObject.SetActive(true);
+
             }
         }
     }
@@ -39,6 +39,7 @@ public class OBJButton : MonoBehaviour
                 obj3.gameObject.SetActive(false);
                 obj4.gameObject.SetActive(false);
                 obj5.gameObject.SetActive(false);
+
             }
             if (GP.isPaused)  //時間が止まっている時FLAGをture
                 FLAG = true;
