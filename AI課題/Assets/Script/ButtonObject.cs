@@ -5,6 +5,7 @@ public class ButtonObject : MonoBehaviour
     public Vector3 pointA;
     public Vector3 pointB;
     public float speed = 2f;
+    public float speed2 = 5f;
 
     private Vector3 target;
 
@@ -21,13 +22,7 @@ public class ButtonObject : MonoBehaviour
         if (MB.MoveFLAG)
         {
 
-            transform.position = Vector3.MoveTowards(transform.position, pointB, speed * Time.deltaTime);
-
-            //if (Vector3.Distance(transform.position, target) < 0.1f)
-            //{
-            //    target = (target == pointA) ? pointB : pointA;
-            //}
-
+            transform.position = Vector3.MoveTowards(transform.position, pointB, speed2 * Time.deltaTime);
         }
         if(!MB.MoveFLAG)
         {
