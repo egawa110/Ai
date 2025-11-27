@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
+    public GameObject OverUI;
+    public GameObject Button;
     public Image HPImage;
+
     public int maxHP          = 4; //最大HP
-    private int currentHP;
+    public int currentHP;
     public float knockback    = 5f;//ノックバック
     public float invincible   = 2f;//無敵
     private bool isInvincible = false;
@@ -89,8 +92,11 @@ public class PlayerHP : MonoBehaviour
     {
         //死亡処理
         Debug.Log("プレイヤー死亡");
+        OverUI.SetActive(true);
+        Button.SetActive(true);
 
         gameObject.SetActive(false);
+
     }
 
 }

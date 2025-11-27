@@ -43,6 +43,14 @@ public class GamePauseController : MonoBehaviour
             enemy.enabled = false;
         }
 
+        //ButtonObject[] buttonObjects = FindObjectsOfType<ButtonObject>();
+        //{
+        //    foreach (ButtonObject BO in buttonObjects)
+        //    {
+        //        BO.enabled = false;
+        //    }
+        //}
+
 
         //カウントダウン
         for (int i = (int)seconds; i > 0; i--)
@@ -66,6 +74,11 @@ public class GamePauseController : MonoBehaviour
             enemy.enabled = true;
             FLAG = true;
         }
+
+        //foreach (ButtonObject BO in buttonObjects)
+        //{
+        //    BO.enabled = true;
+        //}
 
         isPaused = false;
 

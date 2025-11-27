@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Skill_Speed : MonoBehaviour
 {
-    public float Speed = 5f;     //UPするスピード
+    public float Speed = 3f;     //UPするスピード
     public float OrigineSpeed = 0f;     //元々のスピード
     //能力の効果時間
     public float time = 0f;
